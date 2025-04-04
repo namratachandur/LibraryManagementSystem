@@ -111,16 +111,23 @@ public class Library
         //this is a method to return a borrowed book to the library.
         System.out.print("Enter book title to return: ");
         String title = input.nextLine();
+
+        boolean bookFound = false;
         
         for (Book book : books) 
         {
             if (book.getTitle().equalsIgnoreCase(title) && book.isBorrowed()) 
             {
+                bookFound = true;  //mark the boolean check as found.
                 book.returnBook();
                 System.out.println("You have returned: " + title);
+                break;
             }
         }
-        System.out.println("Book not found or wasn't borrowed.");
+        if (!bookFound) 
+        {
+            System.out.println("Book not found or wasn't borrowed.");
+        }
     }
 
     private void searchBook() 
