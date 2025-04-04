@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //this class allows users to manage a library system where they can add, borrow, return, and display books.
@@ -225,7 +226,7 @@ public class Library
     public static void main(String[] args) 
     {
         //main method to run the library system.
-        Library library = new Library();
-        library.showMenu();
+        Library MyLibrary = new Library();
+        MyLibrary.showMenu();
     }
 }
