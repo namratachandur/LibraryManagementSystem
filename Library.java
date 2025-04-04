@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-//this class allows users to manage a library system where they can add, borrow, return, and display books.
+//this class allows users to manage a library system where they can add, borrow, return, find, and display books.
 public class Library 
 {
     private ArrayList<Book> books;
