@@ -17,33 +17,43 @@ public class Library
     public void showMenu() 
     {
         //this method prints out the menu options and accepts a choice from the user.
-        while (true) 
+        try
         {
-            System.out.println("\nLibrary Menu:");
-            System.out.println("1. Add a Book");
-            System.out.println("2. Borrow a Book");
-            System.out.println("3. Return a Book");
-            System.out.println("4. Search for a Book");
-            System.out.println("5. Display Available Books");
-            System.out.println("6. Exit");
-            System.out.println("Enter your choice: ");
-
-            int choice = input.nextInt();
-            input.nextLine();
-
-            switch (choice) 
+            while (true) 
             {
-                case 1 -> addBook();
-                case 2 -> borrowBook();
-                case 3 -> returnBook();
-                case 4 -> displayAvailableBooks();
-                case 5 -> {
-                    System.out.println("Exiting program...");
-                    input.close();
-                    return;
+                System.out.println("\nLibrary Menu:");
+                System.out.println("1. Add a Book");
+                System.out.println("2. Borrow a Book");
+                System.out.println("3. Return a Book");
+                System.out.println("4. Search for a Book");
+                System.out.println("5. Display Available Books");
+                System.out.println("6. Exit");
+                System.out.println("Enter your choice: ");
+
+                int choice = input.nextInt();
+                input.nextLine();
+
+                switch (choice) 
+                {
+                    case 1 -> addBook();
+                    case 2 -> borrowBook();
+                    case 3 -> returnBook();
+                    case 4 -> searchBook();                    
+                    case 5 -> displayAvailableBooks();
+                    case 6 -> 
+                    {
+                            System.out.println("Exiting program...");
+                            input.close();
+                            return;
+                    }
+                    default -> System.out.println("Invalid choice. Please try again.");
                 }
-                default -> System.out.println("Invalid choice. Please try again.");
             }
+        }
+        catch (InputMismatchException e) 
+        {
+            System.out.println("InputMismatchException occured: " + e.getMessage());
+            input.nextLine();
         }
     }
 
