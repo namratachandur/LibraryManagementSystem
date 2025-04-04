@@ -9,45 +9,30 @@ public class Book
         this.isBorrowed = false;
     }
 
+    //this method marks the book as borrowed
+    public void borrow() 
+    {
+        this.isBorrowed = true;
+    }
+
+    //this method marks the book as available
+    public void returnBook() 
+    {
+        this.isBorrowed = false;
+    }
+
+    //this method returns the book's title
     public String getTitle() 
     {
-        //get the title of the book
         return title;
     }
 
+    //this method checks and returns whether the book is borrowed or not
     public boolean isBorrowed() 
     {
-        //check if the book is currently borrowed
         return isBorrowed;
     }
 
-    public void borrow() 
-    {
-        //mark the book as borrowed
-        if (!isBorrowed) 
-        {
-            isBorrowed = true;
-        } 
-        else 
-        {
-            System.out.println("This book is already borrowed.");
-        }
-    }
-
-    public void returnBook() 
-    {
-        //mark the book as returned
-        if (isBorrowed) 
-        {
-            isBorrowed = false;
-        } 
-        else 
-        {
-            System.out.println("This book wasn't borrowed.");
-        }
-    }
-
-    //toString() for better display
     @Override
     public String toString() 
     {
