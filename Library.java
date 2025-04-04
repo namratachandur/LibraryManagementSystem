@@ -23,8 +23,9 @@ public class Library
             System.out.println("1. Add a Book");
             System.out.println("2. Borrow a Book");
             System.out.println("3. Return a Book");
-            System.out.println("4. Display Available Books");
-            System.out.println("5. Exit");
+            System.out.println("4. Search for a Book");
+            System.out.println("5. Display Available Books");
+            System.out.println("6. Exit");
             System.out.println("Enter your choice: ");
 
             int choice = input.nextInt();
@@ -110,6 +111,59 @@ public class Library
             }
         }
         System.out.println("Book not found or wasn't borrowed.");
+    }
+
+    private void searchBook() 
+    {
+        System.out.print("Enter book title to search: ");
+        String title = input.nextLine();
+    
+        boolean bookFound = false;
+
+        for (Book book : books) 
+        {
+            if (book.getTitle().equalsIgnoreCase(title)) 
+            {
+                bookFound = true;  //mark the boolean check as found.
+                System.out.println("Book found: " + book);
+            
+                System.out.println("Would you like to borrow it? (yes/no)");
+                String response = input.nextLine();
+            
+                if (response.equalsIgnoreCase("yes")) 
+                {
+                    try 
+                    {
+                        if (book.isBorrowed()) 
+                        {
+                            throw new BookAlreadyBorrowedException();
+                        }
+                        book.borrow();
+                        System.out.println("You have borrowed: " + title);
+                    } 
+                    catch (BookAlreadyBorrowedException e) 
+                    {
+                        System.out.println("Error borrowing book: " + e.getMessage());
+                    }
+                }
+                break;  //after finding the book, exit loop.
+            }
+        }
+    
+        if (!bookFound) 
+        {
+            System.out.println("Book not found. Would you like to add it to the library? (yes/no)");
+            String response = input.nextLine();
+            if (response.equalsIgnoreCase("yes")) 
+            {
+                addBook();
+            } 
+            else 
+            {
+                System.out.println("Returning to menu...");
+                showMenu();
+            }
+        }
     }
 
     private void displayAvailableBooks() 
