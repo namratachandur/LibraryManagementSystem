@@ -6,13 +6,12 @@ import java.util.Scanner;
 public class Library 
 {
     private ArrayList<Book> books;
-    private Scanner input;
+    Scanner input = new Scanner(System.in);
 
     public Library() 
     {
         //this is a constructor to initialize a library with an empty list of books and a scanner for taking user input.
         books = new ArrayList<>();
-        input = new Scanner(System.in);
     }
 
     public void showMenu() 
