@@ -81,16 +81,16 @@ public class Library
 
     private void borrowBook() 
     {
-        //this is a method to borrow a book from the library.
         System.out.print("Enter book title to borrow: ");
         String title = input.nextLine();
         
-        try
-        {
+        boolean bookFound = false;
+        try {
             for (Book book : books) 
             {
                 if (book.getTitle().equalsIgnoreCase(title)) 
                 {
+                    bookFound = true;
                     if (book.isBorrowed()) 
                     {
                         throw new BookAlreadyBorrowedException();
@@ -99,6 +99,10 @@ public class Library
                     System.out.println("You have borrowed: " + title);
                     return;
                 }
+            }
+            if (!bookFound) 
+            {
+                System.out.println("Book '" + title + "' not found in the library.");
             }
         }
         catch (BookAlreadyBorrowedException e) 
